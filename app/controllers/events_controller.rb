@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     @all_events = Event.published

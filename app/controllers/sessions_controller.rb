@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @tickettype = User.find_by(email: params[:email]) and @tickettype.authenticate(params[:password])
-      session[:user_id] = @tickettype.id
+    if @user = User.find_by(email: params[:email]) and @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       flash[:success] = 'Signed in'
-      redirect_to root_path
+      redirect_to events_path
     else
       flash.now[:error] = 'Invalid username or password'
       render 'new'
@@ -26,9 +26,9 @@ class SessionsController < ApplicationController
   def callback
     if user = User.from_facebook(env["omniauth.auth"]) # log in user here else # don't log user in end
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to events_path
     else
-      # flash[:error] = 'Error while logging in Facebook!'
+      flash[:error] = 'Error while logging in Facebook!'
       redirect_to root_path
     end
 

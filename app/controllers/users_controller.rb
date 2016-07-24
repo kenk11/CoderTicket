@@ -1,23 +1,23 @@
 class UsersController < ApplicationController
-
+  skip_before_action :require_login, only: [:new, :create]
   def new
-    @tickettype = User.new
+    @user = User.new
   end
 
   def create
-    @tickettype = User.new user_params
-    if @tickettype.save
+    @user = User.new user_params
+    if @user.save
       flash[:success] = 'Register successful!'
-      session[:user_id] = @tickettype.id
+      session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:error] = "Error: #{@tickettype.errors.full_messages.to_sentence}"
+      flash[:error] = "Error: #{@user.errors.full_messages.to_sentence}"
       render 'new'
     end
   end
 
   private
   def user_params
-    params.require(:tickettype).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
 end
