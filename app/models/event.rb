@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :extended_html_description, :venue, :category, :starts_at
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
   scope :coming, -> { where("starts_at > ?", Date.today) }
+  scope :published, -> { where(publish: true) }
 
   def self.search(keyword)
     where('name ILIKE ? OR extended_html_description ILIKE ?', "%#{keyword}%", "%#{keyword}%")

@@ -2,12 +2,13 @@ class EventsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
   def index
+    @all_events = Event.published
     if params[:keyword]
-      # @events = Event.coming.search(params[:keyword])
-      @events = Event.search(params[:keyword]).order(starts_at: :asc)
+      @events = @all_events.search(params[:keyword]).order(starts_at: :asc)
     else
-      @events = Event.coming.order(starts_at: :asc)
+      @events = @all_events.coming.order(starts_at: :asc)
     end
+
   end
 
   def publish
@@ -40,6 +41,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @venues = Venue.all
     @categories = Category.all
+    @event.author = current_user
     @event.publish = false
     if @event.save
       flash[:success] = 'Created event successfully!'
