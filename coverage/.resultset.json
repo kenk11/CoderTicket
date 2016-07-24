@@ -632,6 +632,11 @@
         1,
         0,
         null,
+        0,
+        null,
+        0,
+        null,
+        null,
         null,
         1,
         0,
@@ -687,6 +692,12 @@
         null,
         1,
         1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
         null
       ],
       "/home/ken/github/ticket-kenk11/spec/models/region_spec.rb": [
@@ -728,6 +739,6 @@
         null
       ]
     },
-    "timestamp": 1469180830
+    "timestamp": 1469244941
   }
 }

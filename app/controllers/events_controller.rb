@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all    
+    if params[:keyword]
+      # @events = Event.coming.search(params[:keyword])
+      @events = Event.search(params[:keyword])
+    else
+      @events = Event.coming
+    end
   end
 
   def show
