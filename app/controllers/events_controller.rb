@@ -11,14 +11,18 @@ class EventsController < ApplicationController
   end
 
   def publish
-    @event = Event.find params[:id]
-    @event.mark_as_publish!
-    redirect_to 'list'
+    @event = Event.find(params[:event_id])
+    @event.toggle_publish!
+    if @event.is_publish?
+      flash[:success] = 'Published event successfully!'
+    else
+      flash[:success] = 'Unpublished event successfully!'
+    end
+    redirect_to list_path
   end
 
   def list
     @events = Event.all.order(updated_at: :desc)
-
   end
 
   def show
@@ -33,14 +37,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    @events = Event.new(event_params)
+    @event = Event.new(event_params)
     @venues = Venue.all
     @categories = Category.all
-    if @events.save
+    @event.publish = false
+    if @event.save
       flash[:success] = 'Created event successfully!'
-      redirect_to root_path
+      redirect_to list_path
     else
-      flash[:error] = "Error: #{@events.errors.full_messages.to_sentence}"
+      flash[:error] = "Error: #{@event.errors.full_messages.to_sentence}"
       render 'new'
     end
   end

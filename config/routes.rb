@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   resources :users, :sessions, :ticket_types, :venues
   get 'list' => 'events#list'
-  post 'publish' => 'events#publish'
+
 
   get 'auth/:provider/callback' => 'sessions#callback'
   resources :events do
     resources :tickets
-
+    post 'publish' => 'events#publish'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

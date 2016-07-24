@@ -6,24 +6,33 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>#</th>
       <th>Name</th>
-      <th>Starts At</th>
       <th>Venue</th>
+      <th>Status</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     <% @events.each do |event| %>
         <tr>
-          <th scope="row"><%= event.id %></th>
           <td><%= event.name %></td>
-          <td><%= event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %></td>
           <td><%= event.venue.name %></td>
           <td>
+            <% if event.is_publish? %>
+                Published
+            <% else %>
+                Unpublished
+            <% end %>
+          </td>
+          <td>
             <% if event.is_owned?(current_user) %>
-                <%= link_to 'Edit', edit_event_path(id: event), class: 'btn btn-info-outline' %>
+                <%= link_to 'Edit', event, class: 'btn btn-info-outline' %>
                 <%= link_to 'Delete', event, method: 'delete', class: 'btn btn-danger-outline' %>
+                <% if event.is_publish? %>
+                    <%= link_to 'Unpublish', event_publish_path(event), method: 'post', class: 'btn btn-success-outline' %>
+                <% else %>
+                    <%= link_to 'Publish', event_publish_path(event), method: 'post', class: 'btn btn-success-outline' %>
+                <% end %>
             <% end %>
           </td>
         </tr>
