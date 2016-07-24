@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def list
     @events = Event.all.order(updated_at: :desc)
+
   end
 
   def show

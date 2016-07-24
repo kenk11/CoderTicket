@@ -11,7 +11,7 @@ class VenuesController < ApplicationController
     @venue = Venue.new venue_params
     if @venue.save
       flash[:success] = 'Create new venue successful!'
-      redirect_to 'index'
+      redirect_to venues_path
     else
       flash[:error] = "Error: #{@venue.errors.full_messages.to_sentence}"
       render 'new'
@@ -33,9 +33,8 @@ class VenuesController < ApplicationController
     end
   end
 
-
   private
   def venue_params
-    params.require(:venue).permit(:name, :full_address)
+    params.require(:venue).permit(:name, :full_address, :region_id)
   end
 end

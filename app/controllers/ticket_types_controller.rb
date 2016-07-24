@@ -1,6 +1,6 @@
 class TicketTypesController < ApplicationController
   def index
-    @types = TicketType.all
+    @types = TicketType.all.order(updated_at: :desc)
   end
 
   def new
@@ -28,7 +28,7 @@ class TicketTypesController < ApplicationController
     @type = TicketType.find(params[:id])
     if @type.update(type_params)
       flash[:success] = 'Updated ticket type successfully!'
-      redirect_to 'index'
+      redirect_to ticket_types_path
     else
       flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
       render 'edit'
@@ -38,6 +38,6 @@ class TicketTypesController < ApplicationController
 
   private
   def type_params
-    params.require(:ticket_type).permit(:name, :price, :max_quantity)
+    params.require(:ticket_type).permit(:name, :price, :max_quantity, :event_id)
   end
 end

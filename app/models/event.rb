@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :venue
   belongs_to :category
+  belongs_to :author, class_name: 'User'
   has_many :ticket_types
 
   validates_presence_of :extended_html_description, :venue, :category, :starts_at
@@ -14,6 +15,10 @@ class Event < ActiveRecord::Base
   def mark_as_publish!
     self.publish = true
     self.save!
+  end
+
+  def is_owned?(user)
+    self.author == user
   end
 
 end
