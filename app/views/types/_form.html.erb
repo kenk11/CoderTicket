@@ -1,0 +1,20 @@
+<div class="signup-form">
+  <%= form_for @type, url: 'type' do |f| %>
+      <div class="form-group">
+        <%= f.text_field 'name', class: 'form-control', placeholder: 'Name Event' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field 'price', class: 'form-control', placeholder: 'Name Event' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field 'max_quantity', class: 'form-control', placeholder: 'Name Event' %>
+      </div>
+      <div>
+        <%= f.label :event %>
+        <%= f.select :event_id, @events.map { |event| [event.name, event.id] }, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-block btn-info' %>
+      </div>
+  <% end %>
+</div>

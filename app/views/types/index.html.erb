@@ -1,0 +1,36 @@
+<div class="container avoid-nav">
+  <h1> Events</h1>
+  <div class="pull-xs-right">
+    <%= link_to 'Create Ticket Type', new_type_path, class: 'btn btn-success-outline' %>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Event</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Max Quantity</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @types.each do |type| %>
+        <tr>
+          <th scope="row"><%= type.id %></th>
+          <% if type.event %>
+              <td><%= type.event.name %></td>
+          <% else %>
+              <td>No Event</td>
+          <% end %>
+          <td><%= type.name %></td>
+          <td><%= type.price %></td>
+          <td><%= type.max_quantity %></td>
+          <td>
+            <%= link_to 'Edit', edit_type_path(id: type), class: 'btn btn-info-outline' %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

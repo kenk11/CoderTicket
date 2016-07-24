@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @user = User.find_by(email: params[:email]) and @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+    if @tickettype = User.find_by(email: params[:email]) and @tickettype.authenticate(params[:password])
+      session[:user_id] = @tickettype.id
       flash[:success] = 'Signed in'
       redirect_to root_path
     else

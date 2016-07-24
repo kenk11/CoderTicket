@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root 'events#index'
 
+  get 'list' => 'events#list'
+
   resources :users
   resources :sessions
+  resources :types
+
   get 'auth/:provider/callback' => 'sessions#callback'
   resources :events do
     resources :tickets

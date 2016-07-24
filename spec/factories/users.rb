@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :tickettype do
     email "MyString"
     name "MyString"
     password_digest "MyString"

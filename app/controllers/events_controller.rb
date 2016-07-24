@@ -4,10 +4,14 @@ class EventsController < ApplicationController
   def index
     if params[:keyword]
       # @events = Event.coming.search(params[:keyword])
-      @events = Event.search(params[:keyword])
+      @events = Event.search(params[:keyword]).order(starts_at: :asc)
     else
-      @events = Event.coming
+      @events = Event.coming.order(starts_at: :asc)
     end
+  end
+
+  def list
+    @events = Event.all
   end
 
   def show
@@ -15,7 +19,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @type = Event.new
     @venues = Venue.all
     @categories = Category.all
   end
@@ -33,14 +37,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    @venues = Venue.all
+    @categories = Category.all
+  end
+
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:success] = 'Updated event successfully!'
-      redirect_to index
+      redirect_to list_path
     else
-      flash[:error] = "Error: #{@event.errors.full_messages.to_sentence}"
-      render 'update'
+      flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
+      render 'edit'
     end
   end
 
