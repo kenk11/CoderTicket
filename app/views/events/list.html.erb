@@ -15,7 +15,7 @@
     <tbody>
     <% @events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
+          <td><%= link_to event.name, event %></td>
           <td><%= event.venue.name %></td>
           <td>
             <% if event.is_publish? %>
