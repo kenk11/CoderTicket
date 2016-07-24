@@ -62,6 +62,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      flash[:success] = 'Deleted event successfully!'
+      redirect_to list_path
+    else
+      flash[:error] = "Error: #{@event.errors.full_messages.to_sentence}"
+    end
+  end
+
   private
   def event_params
     params.require(:event).permit(:name, :starts_at, :ends_at, :venue_id, :category_id, :hero_image_url, :extended_html_description)

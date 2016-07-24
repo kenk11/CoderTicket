@@ -12,7 +12,7 @@ class TicketTypesController < ApplicationController
     @type = TicketType.new type_params
     if @type.save
       flash[:success] = 'Create new ticket type successful!'
-      redirect_to list_path
+      redirect_to ticket_types_path
     else
       flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
       render 'new'
@@ -32,6 +32,16 @@ class TicketTypesController < ApplicationController
     else
       flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
       render 'edit'
+    end
+  end
+
+  def destroy
+    @type = TicketType.find(params[:id])
+    if @type.destroy
+      flash[:success] = 'Deleted ticket type successfully!'
+      redirect_to ticket_types_path
+    else
+      flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
     end
   end
 

@@ -22,6 +22,7 @@
           <td><%= venue.full_address %></td>
           <td>
             <%= link_to 'Edit', edit_venue_path(id: venue), class: 'btn btn-info-outline' %>
+            <%= link_to 'Delete', venue, method: 'delete', class: 'btn btn-danger-outline' %>
           </td>
         </tr>
     <% end %>

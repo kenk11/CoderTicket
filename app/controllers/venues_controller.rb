@@ -26,12 +26,23 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     if @venue.update(venue_params)
       flash[:success] = 'Updated venue successfully!'
-      redirect_to 'index'
+      redirect_to venues_path
     else
       flash[:error] = "Error: #{@venue.errors.full_messages.to_sentence}"
       render 'edit'
     end
   end
+
+  def destroy
+    @venue = Venue.find(params[:id])
+    if @venue.destroy
+      flash[:success] = 'Deleted venue successfully!'
+      redirect_to venues_path
+    else
+      flash[:error] = "Error: #{@venue.errors.full_messages.to_sentence}"
+    end
+  end
+
 
   private
   def venue_params

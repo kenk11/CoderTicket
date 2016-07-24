@@ -1,4 +1,4 @@
-<div class="container avoid-nav">
+<div class="container">
   <h1> Ticket Types</h1>
   <div class="pull-xs-right">
     <%= link_to 'Create Ticket Type', new_ticket_type_path, class: 'btn btn-success-outline' %>
@@ -28,6 +28,7 @@
           <td><%= type.max_quantity %></td>
           <td>
             <%= link_to 'Edit', edit_ticket_type_path(id: type), class: 'btn btn-info-outline' %>
+            <%= link_to 'Delete', type, method: 'delete', class: 'btn btn-danger-outline' %>
           </td>
         </tr>
     <% end %>
