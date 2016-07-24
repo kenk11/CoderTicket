@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CsTemplate</title>
+  <title>Ticket KenK11</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<nav class="navbar  navbar-dark bg-inverse">
-  <a class="navbar-brand" href="<%= root_path %>">Coder Ticket</a>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <%= link_to 'Ticket KenK11', root_path, class: 'navbar-brand' %>
   <ul class="nav navbar-nav">
     <% unless signed_in? %>
         <li class="nav-item">
@@ -19,6 +19,9 @@
           <%= link_to 'Sign Up', new_user_path, class: 'nav-link' %>
         </li>
     <% else %>
+        <li class="nav-item">
+          <%= link_to 'Create Event', new_event_path, class: 'nav-link' %>
+        </li>
         <div class="form-inline pull-xs-right">
           <li class="nav-item active">
             <div class="nav-link"> Hello <%= current_user.name %>,</div>
@@ -41,6 +44,5 @@
     </div>
 <% end %>
 <%= yield %>
-
 </body>
 </html>

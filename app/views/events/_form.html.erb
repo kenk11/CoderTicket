@@ -1,0 +1,30 @@
+<div class="signup-form">
+  <%= form_for Event.new do |f| %>
+      <div class="form-group">
+        <%= f.text_field 'name', class: 'form-control', placeholder: 'Name Event' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :starts_at %>
+        <%= f.date_select 'starts_at', class: 'form-control' %>
+        <%= f.label :ends_at %>
+        <%= f.date_select 'ends_at', class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :venue %>
+        <%= f.select :venue_id, @venues.map { |venue| [venue.name, venue.id] }, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :category %>
+        <%= f.select :category_id, @categories.map { |category| [category.name, category.id] }, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field 'hero_image_url', class: 'form-control', placeholder: 'Image' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area 'extended_html_description', class: 'form-control', placeholder: 'Description' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Publish', class: 'btn btn-block btn-info' %>
+      </div>
+  <% end %>
+</div>
