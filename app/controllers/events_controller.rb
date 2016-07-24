@@ -13,11 +13,16 @@ class EventsController < ApplicationController
 
   def publish
     @event = Event.find(params[:event_id])
-    @event.toggle_publish!
     if @event.is_publish?
-      flash[:success] = 'Published event successfully!'
-    else
       flash[:success] = 'Unpublished event successfully!'
+      @event.toggle_publish!
+    else
+      if @event.has_ticket_types?
+        flash[:success] = 'Published event successfully!'
+        @event.toggle_publish!
+      else
+        flash[:error] = 'Event doesn\'t have any ticket type!'
+      end
     end
     redirect_to list_path
   end

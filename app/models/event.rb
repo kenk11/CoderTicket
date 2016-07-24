@@ -9,6 +9,11 @@ class Event < ActiveRecord::Base
   scope :coming, -> { where("starts_at > ?", Date.today) }
   scope :published, -> { where(publish: true) }
 
+
+  def has_ticket_types?
+    ticket_types.count > 0
+  end
+
   def self.search(keyword)
     where('name ILIKE ? OR extended_html_description ILIKE ?', "%#{keyword}%", "%#{keyword}%")
   end
