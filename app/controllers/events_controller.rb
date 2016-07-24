@@ -10,8 +10,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def publish
+    @event = Event.find params[:id]
+    @event.mark_as_publish!
+    redirect_to 'list'
+  end
+
   def list
-    @events = Event.all
+    @events = Event.all.order(updated_at: :desc)
   end
 
   def show
@@ -49,13 +55,9 @@ class EventsController < ApplicationController
       flash[:success] = 'Updated event successfully!'
       redirect_to list_path
     else
-      flash[:error] = "Error: #{@type.errors.full_messages.to_sentence}"
+      flash[:error] = "Error: #{@event.errors.full_messages.to_sentence}"
       render 'edit'
     end
-  end
-
-  def destroy
-
   end
 
   private

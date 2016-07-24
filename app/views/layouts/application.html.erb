@@ -25,6 +25,9 @@
         <li class="nav-item">
           <%= link_to 'Ticket Types', types_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Venues', venues_path, class: 'nav-link' %>
+        </li>
         <div class="form-inline pull-xs-right">
           <li class="nav-item active">
             <div class="nav-link"> Hello <%= current_user.name %>,</div>
@@ -36,16 +39,18 @@
     <% end %>
   </ul>
 </nav>
-<% if flash[:error] %>
-    <div class="alert alert-danger">
-      <%= flash[:error] %>
-    </div>
-<% end %>
-<% if flash[:success] %>
-    <div class="alert alert-success">
-      <%= flash[:success] %>
-    </div>
-<% end %>
+<div class="container avoid-nav">
+  <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+  <% end %>
+  <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+  <% end %>
+</div>
 <%= yield %>
 </body>
 </html>

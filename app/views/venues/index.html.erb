@@ -1,0 +1,30 @@
+<div class="container avoid-nav">
+  <h1> Events</h1>
+  <div class="pull-xs-right">
+    <%= link_to 'Create Venue', new_venue_path, class: 'btn btn-success-outline' %>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Region</th>
+      <th>Full Address</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @venues.each do |venue| %>
+        <tr>
+          <th scope="row"><%= venue.id %></th>
+          <td><%= venue.name %></td>
+          <td><%= venue.region.name %></td>
+          <td><%= venue.full_address %></td>
+          <td>
+            <%= link_to 'Edit', edit_venue_path(id: venue), class: 'btn btn-info-outline' %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

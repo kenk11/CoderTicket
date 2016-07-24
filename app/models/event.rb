@@ -11,4 +11,9 @@ class Event < ActiveRecord::Base
     where('name ILIKE ? OR extended_html_description ILIKE ?', "%#{keyword}%", "%#{keyword}%")
   end
 
+  def mark_as_publish!
+    self.publish = true
+    self.save!
+  end
+
 end
