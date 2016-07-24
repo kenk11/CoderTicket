@@ -1,7 +1,7 @@
 class CreateTicketTypes < ActiveRecord::Migration
   def change
     create_table :ticket_types do |t|
-      t.references :type, index: true, foreign_key: true
+      t.references :event, index: true, foreign_key: true
       t.integer :price
       t.string :name
       t.integer :max_quantity
