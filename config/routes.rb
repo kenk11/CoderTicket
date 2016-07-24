@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
 
-  resources :users, :sessions, :types, :venues
+  resources :users, :sessions, :ticket_types, :venues
   get 'list' => 'events#list'
   post 'publish' => 'events#publish'
 

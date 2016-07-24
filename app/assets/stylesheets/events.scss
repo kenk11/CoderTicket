@@ -12,7 +12,7 @@
     font-weight: bold;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.498039) 2px 3px 6px;
-  } 
+  }
   input {
     margin: auto;
     margin-top: 20px;
@@ -54,88 +54,88 @@
 }
 
 .events-list {
-    margin-top: 20px;
-    padding: 30px 150px;
-    background-color: $gray-lighter;
-    .card {
-        margin-bottom: 20px;
-        img {
-            max-width: 100%;
-        }
-        &:hover {
-            box-shadow: 0 0 8px $gray;
-            transition: 0.5s;
-        }
-        .card-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
+  margin-top: 20px;
+  padding: 30px 150px;
+  background-color: $gray-lighter;
+  .card {
+    margin-bottom: 20px;
+    img {
+      max-width: 100%;
     }
-    a {
-        text-decoration: none;
-        color: $gray-dark;
+    &:hover {
+      box-shadow: 0 0 8px $gray;
+      transition: 0.5s;
     }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: $gray-dark;
+  }
 }
 
 .events-detail {
-    .sidebar {
-        padding-top: 80px;
-        color: rgb(233, 237, 240);
-        background-color: #303B46;
-        float: left;
-        position: fixed;
-        min-height: 700px;
-        height: 100%;
-        p {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: larger;
-            font-family: 'serif';
-            i.fa {
-                font-size: 30px;
-            }
-        }
-        .ticket-list {
-            padding-left: 40px;
-            padding-right: 40px;
-            font-size: 14px;
-            button {
-                margin-top: 40px;
-            }
-            .price {
-                font-weight: bold;
-                font-size: 18px;
-            }
-        }
-        a {
-            text-decoration: none;
-            color: white;
-        }
+  .sidebar {
+    padding-top: 80px;
+    color: rgb(233, 237, 240);
+    background-color: #303B46;
+    float: left;
+    position: fixed;
+    min-height: 700px;
+    height: 100%;
+    p {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: larger;
+      font-family: 'serif';
+      i.fa {
+        font-size: 30px;
+      }
     }
-    .event-content {
-        float: right;
-        h3 {
-            font-weight: bold;
-            font-size: 25px;
-            margin-bottom: 30px;
-        }
-        .hero-img {
-            min-height: 400px;
-        }
-        .container {
-            margin-left: 50px;
-            margin-top: 30px;
-            .time-details, .venue-details {
-                margin-left: 20px;
-                margin-bottom: 20px;
-            }
-            .img-spacer {
-                text-align: center;
-                margin: 60px;
-            }
-            .extended-description {
-                margin-top: 20px;
-            }
-        }
+    .ticket-list {
+      padding-left: 40px;
+      padding-right: 40px;
+      font-size: 14px;
+      button {
+        margin-top: 40px;
+      }
+      .price {
+        font-weight: bold;
+        font-size: 18px;
+      }
     }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  .event-content {
+    float: right;
+    h3 {
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
+    .hero-img {
+      min-height: 400px;
+    }
+    .container {
+      margin-left: 50px;
+      margin-top: 30px;
+      .time-details, .venue-details {
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+      .img-spacer {
+        text-align: center;
+        margin: 60px;
+      }
+      .extended-description {
+        margin-top: 20px;
+      }
+    }
+  }
 }

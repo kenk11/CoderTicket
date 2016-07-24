@@ -1,7 +1,7 @@
 <div class="container avoid-nav">
   <h1> Events</h1>
   <div class="pull-xs-right">
-    <%= link_to 'Create Ticket Type', new_type_path, class: 'btn btn-success-outline' %>
+    <%= link_to 'Create Ticket Type', new_ticket_type_path, class: 'btn btn-success-outline' %>
   </div>
   <table class="table table-striped">
     <thead>
@@ -27,7 +27,7 @@
           <td><%= type.price %></td>
           <td><%= type.max_quantity %></td>
           <td>
-            <%= link_to 'Edit', edit_type_path(id: type), class: 'btn btn-info-outline' %>
+            <%= link_to 'Edit', edit_ticket_type_path(id: type), class: 'btn btn-info-outline' %>
           </td>
         </tr>
     <% end %>

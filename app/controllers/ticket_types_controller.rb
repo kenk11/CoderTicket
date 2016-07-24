@@ -1,4 +1,4 @@
-class TypesController < ApplicationController
+class TicketTypesController < ApplicationController
   def index
     @types = TicketType.all
   end

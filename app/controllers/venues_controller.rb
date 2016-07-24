@@ -5,12 +5,10 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
-    @regions = Region.all
   end
 
   def create
     @venue = Venue.new venue_params
-    @regions = Region.all
     if @venue.save
       flash[:success] = 'Create new venue successful!'
       redirect_to 'index'
@@ -38,6 +36,6 @@ class VenuesController < ApplicationController
 
   private
   def venue_params
-    params.require(:venue).permit(:name, :full_address, :region_id)
+    params.require(:venue).permit(:name, :full_address)
   end
 end

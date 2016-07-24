@@ -25,9 +25,10 @@ class EventsController < ApplicationController
   end
 
   def new
-    @type = Event.new
+    @event = Event.new
     @venues = Venue.all
     @categories = Category.all
+    @types = TicketType.all
   end
 
   def create
