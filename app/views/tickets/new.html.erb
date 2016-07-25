@@ -21,37 +21,38 @@
 
     </div>
   </div>
-  <% if @event.is_coming? %>
-      <div class="row">
-        <div class="col-md-11 col-md-offset-1">
 
-          <table class="table">
-            <th> Ticket Type</th>
-            <th> Unit Price</th>
-            <th> Quantity</th>
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1">
 
-            <% @event.ticket_types.each do |type| %>
-                <tr>
-                  <td> <%= type.name %> </td>
-                  <td> <%= number_to_currency(type.price, unit: 'VND ', precision: 0) %> </td>
-                  <td> <%= select_tag('quantity', options_for_select(0..10)) %></td>
-                </tr>
-            <% end %>
-          </table>
+      <table class="table">
+        <th> Ticket Type</th>
+        <th> Unit Price</th>
+        <th> Quantity</th>
 
-        </div>
-      </div>
-      <div class="row">
+        <% @event.ticket_types.each do |type| %>
+            <tr>
+              <td> <%= type.name %> </td>
+              <td> <%= number_to_currency(type.price, unit: 'VND ', precision: 0) %> </td>
+              <td> <%= select_tag('quantity', options_for_select(0..10)) %></td>
+            </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+  <div class="row">
+    <% if @event.is_coming? %>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+            <button class="btn btn-success btn-lg btn-block"> Buy</button>
+          </div>
+    <% else %>
         <div class="col-md-2 col-md-offset-5">
-          <button class="btn btn-success btn-lg btn-block"> Buy</button>
+          <button class="btn btn-secondary btn-lg disabled"> BOOKING IS NOT AVAILABLE</button>
         </div>
-        <div>
-        </div>
-      </div>
-  <% else %>
-      <div>
-        EVENT FINISHED, BOOKING NOT AVAILABLE
-      </div>
-  <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
 
