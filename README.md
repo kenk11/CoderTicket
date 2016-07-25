@@ -1,12 +1,12 @@
-# Homework 3 - *Name of App*
+# Homework 3 - *Ticket KenK11*
 
-**Name of your app** is a Ruby on Rails blog application that allows users to create and buy tickets to cool events. 
+**Ticket KenK11** is a Ruby on Rails blog application that allows users to create and buy tickets to cool events. 
 
-Submitted by: **Your Name Here**
+Submitted by: **Lam Hoang Vu**
 
-Time spent: **X** hours
+Time spent: **20** hours
 
-URL: **Insert your Heroku URL here**
+URL: **[http://ticket-kenk11.herokuapp.com/](http://ticket-kenk11.herokuapp.com/)**
 
 SimpleCov Test Coverage: **Insert percentage or link to report here**
 

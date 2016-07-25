@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
     self.publish
   end
 
+  def is_coming?
+    self.starts_at > Date.today
+  end
+
   def toggle_publish!
     self.publish = !self.publish
     self.save!
